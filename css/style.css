@@ -3,7 +3,8 @@
   --violet: #EE82EE;
   --purple: #800080;
   --lavender: #E6E6FA;
-  --rockies-purple: #33006F;
+  --rockies-purple: #33006F; 
+  --black-gray: #151515;
 }
 
 body {
@@ -12,7 +13,7 @@ body {
   box-sizing: border-box;
   background: var(--lavender);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: var(--rockies-purple);
+  color: var(--black-gray);
 }
 
 .header-container {
@@ -22,11 +23,14 @@ body {
 
 .main-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .gameboard-container {
   display: grid;
+  margin: 3rem 0 2rem 0;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 0px 0px;
@@ -46,7 +50,6 @@ body {
   justify-content: center;
   justify-items: center;
   border: 2px solid var(--violet);
-
 }
 
 .cell:first-child,
@@ -85,13 +88,61 @@ body {
 }
 
 .playerX {
-  width: 10px;
-  height: 10px;
-  background-color: red;
+  z-index: -1;
+  height: 90px;
+  width: 90px;
+  border-radius: 5px;
+  position: relative;
+  
+}
+
+.playerX::after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: "\274c"; /* actual color */
+  font-size: 50px; 
+  color: var(--rockies-purple);
+  line-height: 100px;
+  text-align: center;
+
 }
 
 .playerO {
-  width: 10px;
-  height: 10px;
-  background-color: blue;
+  align-self: center;
+  z-index: -2;
+  height: 45px;
+  width: 45px;
+  position: relative;
+  border: 7px solid var(--rockies-purple);
+  border-radius: 50%
 }
+
+#gameChoiceButtons {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-self: center;
+  justify-content: center;
+  align-items: center;
+}
+
+#playerButtons {
+  margin: 1rem;
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+
+.button:hover {
+  opacity: 0.6;
+}
+
+#computerButtons {
+  margin: 1rem;
+}
+

@@ -17,7 +17,7 @@
       <div class="main-container">
         <div class="result-message"></div>
         <div id="currentPlayer"></div>
-        <div class="gameboard-container" id="gameBoardContainer">
+        <div class="gameboard-container" id="gameboardContainer">
           <!-- First three -->
           <div class="cell">
             <div class="cell-child"></div>
@@ -40,13 +40,27 @@
           </div>
           <!-- Third three -->
           <div class="cell">
-            <div></div>
-          </div class="cell-child">
+            <div class="cell-child"></div>
+          </div>
           <div class="cell">
             <div class="cell-child"></div>
           </div>
           <div class="cell">
             <div class="cell-child"></div>
+          </div>
+        </div>
+        <div id="gameChoiceButtons">
+          <div id="playerButtons">
+            <button class="button" id="playerButton">Player vs Player</button>
+            <!-- <button class="button" id="">Player 2</button> -->
+          </div>
+          <div>or</div>
+          <div>
+            <div id="computerButtons">
+              <button class="button" id="computerButton">
+                Player vs Computer
+              </button>
+            </div>
           </div>
         </div>
       </div>
