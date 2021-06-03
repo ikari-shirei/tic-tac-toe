@@ -1,0 +1,97 @@
+:root {
+  --linear1: linear-gradient(90deg, rgba(238,130,238,1) 0%, rgba(128,0,128,1) 100%);
+  --violet: #EE82EE;
+  --purple: #800080;
+  --lavender: #E6E6FA;
+  --rockies-purple: #33006F;
+}
+
+body {
+  margin: 0;
+  padding: 0; 
+  box-sizing: border-box;
+  background: var(--lavender);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--rockies-purple);
+}
+
+.header-container {
+  display: flex;
+  justify-content: center;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+}
+
+.gameboard-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0px 0px;
+  grid-template-areas:
+    ". . ."
+    ". . ."
+    ". . .";
+  /* border: 2px solid var(--rockies-purple); */
+  /* width: 90vw;
+  height: 90vw; */
+  width: 300px;
+  height: 300px;
+}
+
+.cell {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  border: 2px solid var(--violet);
+
+}
+
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3)
+ {
+  border-top: 0;
+}
+
+.cell:first-child,
+.cell:nth-child(4),
+.cell:nth-child(7) {
+  border-left: 0;
+}
+
+.cell:nth-child(3),
+.cell:nth-child(6),
+.cell:nth-child(9) {
+  border-right: 0;
+}
+
+.cell:nth-child(7),
+.cell:nth-child(8),
+.cell:nth-child(9) {
+  border-bottom: 0;
+}
+
+.gameboard-element {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: var(--violet);
+  border: 2px solid var(--rockies-purple);
+}
+
+.playerX {
+  width: 10px;
+  height: 10px;
+  background-color: red;
+}
+
+.playerO {
+  width: 10px;
+  height: 10px;
+  background-color: blue;
+}
