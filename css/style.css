@@ -136,6 +136,8 @@ body {
 .button {
   padding: 0.5rem 1rem;
   font-size: 1rem;
+  background-color: var(--lavender);
+  border: 2px solid var(--black-gray);
 }
 
 .button:hover {
@@ -146,3 +148,20 @@ body {
   margin: 1rem;
 }
 
+#restartButtons {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-self: center;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+#resetButton {
+  margin: 1rem;
+}
+
+#goBackButton {
+  margin: 1rem;
+}
