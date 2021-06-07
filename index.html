@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="icon" href="./img/icon.png" />
   </head>
   <body>
     <header>
@@ -15,8 +16,17 @@
     </header>
     <main>
       <div class="main-container">
-        <div class="result-message"></div>
-        <div id="currentPlayer"></div>
+        <div id="scores">
+          <div id="playerOneScoreContainer">
+            <div id="playerOneName">Player 1</div>
+            <div id="playerOneScore">0</div>
+          </div>
+          <div id="playerTwoScoreContainer">
+            <div id="playerTwoName">Player 2</div>
+            <div id="playerTwoScore">0</div>
+          </div>
+        </div>
+
         <div class="gameboard-container" id="gameboardContainer">
           <!-- First three -->
           <div class="cell">
@@ -49,22 +59,47 @@
             <div class="cell-child"></div>
           </div>
         </div>
+        <div id="gameStatus">X will play</div>
         <div id="gameChoiceButtons">
           <div id="playerButtons">
             <button class="button" id="playerButton">Player vs Player</button>
-            <!-- <button class="button" id="">Player 2</button> -->
           </div>
           <div>or</div>
-          <div>
-            <div id="computerButtons">
-              <button class="button" id="computerButton">
-                Player vs Computer
-              </button>
-            </div>
+          <div id="computerButtons">
+            <button class="button" id="computerButton">
+              Player vs Computer
+            </button>
           </div>
         </div>
+
+        <div id="playerNamesContainer">
+          <form>
+            <div>
+              <label for="playerOne">Player 1 Name</label>
+              <input
+                type="text"
+                id="playerOne"
+                name="playerOne"
+                placeholder="Player 1 (X)"
+              />
+            </div>
+            <div>
+              <label for="playerTwo">Player 2 Name</label>
+              <input
+                type="text"
+                id="playerTwo"
+                name="playerTwo"
+                placeholder="Player 2 (O)"
+              />
+            </div>
+            <button id="playerGameStartButton" class="button" type="button">
+              Start
+            </button>
+          </form>
+        </div>
+
         <div id="restartButtons">
-          <div class="button" id="resetButton">Restart</div>
+          <div class="button" id="resetButton">Play Again</div>
           <div class="button" id="goBackButton">Go Back</div>
         </div>
       </div>
