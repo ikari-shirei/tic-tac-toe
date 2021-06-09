@@ -1,6 +1,7 @@
 # Tic Tac Toe
 ## Introduction
 * Simple Tic Tac Toe game, created with HTML, CSS, JS.
+* [Live Preview](https://ikari-shirei.github.io/tic-tac-toe/)
 
 <img src="https://github.com/ikari-shirei/tic-tac-toe/blob/main/img/game-screenshot.png" alt="Tic Tac Toe game" width="600"/>
 
