@@ -4,6 +4,7 @@
   --purple: #800080;
   --lavender: #E6E6FA;
   --rockies-purple: #33006F; 
+  --pink: #ec41c1; 
   --black-gray: #151515;
 }
 
@@ -19,6 +20,11 @@ body {
 .header-container {
   display: flex;
   justify-content: center;
+  background-color: var(--black-gray);
+}
+
+.header-container h1 {
+  color:  var(--lavender);
 }
 
 .main-container {
@@ -41,6 +47,7 @@ body {
   justify-content: center;
   align-items: center;
   margin: 1rem;
+
 }
 
 #playerOneScoreContainer div,
@@ -48,6 +55,23 @@ body {
   margin: 0.5rem;
 }
 
+#playerOneName {
+  color: var(--black-gray);
+  font-weight: bold;
+}
+
+#playerTwoName {
+  color: var(--black-gray);
+  font-weight: bold;
+}
+
+#playerOneScore {
+  color: var(--black-gray);
+}
+
+#playerTwoScore {
+  color: var(--black-gray);
+}
 
 .gameboard-container {
   display: grid;
@@ -199,6 +223,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 2rem 0 0 0;
 } 
 
 #playerNamesContainer form{
@@ -241,4 +266,11 @@ body {
 #playerGameStartButton {
   margin: 1rem;
   width: 212px;
+}
+
+#gameStatus {
+  background-color: var(--black-gray);
+  color: var(--lavender);
+  padding: 0.5rem;
+  border-radius: 5px;
 }

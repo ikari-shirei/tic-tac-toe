@@ -1,12 +1,13 @@
 'use strict';
 
-const Gamechoice = (() => {
+const Game = (() => {
+  //DOM
   const cells = document.querySelectorAll('.cell');
   const cellArray = Array.from(cells);
   const gameboardContainer = document.querySelector('#gameboardContainer');
   const gameChoiceButtons = document.querySelector('#gameChoiceButtons');
   const playerButton = document.querySelector('#playerButton');
-  const computerButton = document.querySelector('#computerButton');
+  /*  const computerButton = document.querySelector('#computerButton'); */
   const restartButtons = document.querySelector('#restartButtons');
   const resetButton = document.querySelector('#resetButton');
   const goBackButton = document.querySelector('#goBackButton');
@@ -75,7 +76,7 @@ const Gamechoice = (() => {
       player2.name = playerTwo.value;
       playerTwoName.textContent = player2.name;
     }
-
+    gameStatus.textContent = `${player1.name} will play`;
     playerNamesContainerForm.reset();
     gameDisplayOn();
     playerNamesContainer.style.display = 'none';
@@ -83,17 +84,20 @@ const Gamechoice = (() => {
   });
 
   //computer button onclick
-  computerButton.addEventListener('click', () => {
+  /*   computerButton.addEventListener('click', () => {
     gameDisplayOn();
+    gameStatus.textContent = `${player1.name} will play`;
     gameChoiceButtons.style.display = 'none';
     playerNamesContainer.style.display = 'none';
     restartButtons.style.display = 'none';
-  });
+    player2.name = 'Computer';
+    playerTwoName.textContent = player2.name;
+  }); */
 
   //reset button onclick
   resetButton.addEventListener('click', () => {
     restartButtons.style.display = 'none';
-    gameStatus.textContent = `X will play`;
+    gameStatus.textContent = `${player1.name} will play`;
     cellArray.forEach((eachCell) => {
       eachCell.firstElementChild.classList.remove('playerX');
       eachCell.firstElementChild.classList.remove('playerO');
@@ -109,20 +113,15 @@ const Gamechoice = (() => {
     playerTwoName.textContent = 'Player 2';
     playerOneScore.textContent = 0;
     playerTwoScore.textContent = 0;
-    gameStatus.textContent = `X will play`;
+    gameStatus.textContent = `${player1.name} will play`;
+    playerOneCurrentScore = 0;
+    playerTwoCurrentScore = 0;
     cellArray.forEach((eachCell) => {
       eachCell.firstElementChild.classList.remove('playerX');
       eachCell.firstElementChild.classList.remove('playerO');
       gameboardContainer.style.pointerEvents = 'auto';
     });
   });
-})();
-
-//Gameboard
-const Gameboard = (() => {
-  const cells = document.querySelectorAll('.cell');
-  const goBackButton = document.querySelector('#goBackButton');
-  const gameStatus = document.querySelector('#gameStatus');
 
   let currentPlayer = 'X';
   let gameState = ['', '', '', '', '', '', '', '', ''];
@@ -137,14 +136,20 @@ const Gameboard = (() => {
 
       //Add X and O's using classList
       if (currentPlayer === 'X') {
-        if (cells[cellIndex].firstElementChild.classList.contains('playerO')) {
+        if (
+          cells[cellIndex].firstElementChild.classList.contains('playerO') ||
+          cells[cellIndex].firstElementChild.classList.contains('playerX')
+        ) {
           return;
         } else {
           cells[cellIndex].firstElementChild.classList.add('playerX');
           currentPlayer = 'O';
         }
       } else {
-        if (cells[cellIndex].firstElementChild.classList.contains('playerX')) {
+        if (
+          cells[cellIndex].firstElementChild.classList.contains('playerX') ||
+          cells[cellIndex].firstElementChild.classList.contains('playerO')
+        ) {
           return;
         } else {
           currentPlayer = 'X';
@@ -156,10 +161,10 @@ const Gameboard = (() => {
       (function handleResult() {
         if (currentPlayer === 'X') {
           gameState[cellIndex] = 'O';
-          gameStatus.textContent = `X will play`;
+          gameStatus.textContent = `${player1.name} will play`;
         } else {
           gameState[cellIndex] = 'X';
-          gameStatus.textContent = `O will play`;
+          gameStatus.textContent = `${player2.name} will play`;
         }
 
         //reset game after game over
@@ -170,73 +175,49 @@ const Gameboard = (() => {
           currentPlayer = 'X';
         }
 
-        /*  let winningConditions = [
-          [0, 1, 2],
-          [3, 4, 5],
-          [6, 7, 8],
-          [0, 3, 6],
-          [1, 4, 7],
-          [2, 5, 8],
-          [0, 4, 8],
-          [2, 4, 6],
-        ]; */
+        function winCon(who) {
+          if (
+            (gameState[0] === who &&
+              gameState[1] === who &&
+              gameState[2] === who) ||
+            (gameState[3] === who &&
+              gameState[4] === who &&
+              gameState[5] === who) ||
+            (gameState[6] === who &&
+              gameState[7] === who &&
+              gameState[8] === who) ||
+            (gameState[0] === who &&
+              gameState[3] === who &&
+              gameState[6] === who) ||
+            (gameState[1] === who &&
+              gameState[4] === who &&
+              gameState[7] === who) ||
+            (gameState[2] === who &&
+              gameState[5] === who &&
+              gameState[8] === who) ||
+            (gameState[0] === who &&
+              gameState[4] === who &&
+              gameState[8] === who) ||
+            (gameState[2] === who &&
+              gameState[4] === who &&
+              gameState[6] === who)
+          ) {
+            return true;
+          } else {
+            return false;
+          }
+        }
 
-        // Result of game
-        if (
-          (gameState[0] === 'X' &&
-            gameState[1] === 'X' &&
-            gameState[2] === 'X') ||
-          (gameState[3] === 'X' &&
-            gameState[4] === 'X' &&
-            gameState[5] === 'X') ||
-          (gameState[6] === 'X' &&
-            gameState[7] === 'X' &&
-            gameState[8] === 'X') ||
-          (gameState[0] === 'X' &&
-            gameState[3] === 'X' &&
-            gameState[6] === 'X') ||
-          (gameState[1] === 'X' &&
-            gameState[4] === 'X' &&
-            gameState[7] === 'X') ||
-          (gameState[2] === 'X' &&
-            gameState[5] === 'X' &&
-            gameState[8] === 'X') ||
-          (gameState[0] === 'X' &&
-            gameState[4] === 'X' &&
-            gameState[8] === 'X') ||
-          (gameState[2] === 'X' && gameState[4] === 'X' && gameState[6] === 'X')
-        ) {
+        // Result of game player vs player
+        if (winCon('X')) {
           playerOneCurrentScore++;
           playerOneScore.textContent = playerOneCurrentScore;
-          gameStatus.textContent = `X won`;
+          gameStatus.textContent = `${player1.name} won`;
           afterResult();
-        } else if (
-          (gameState[0] === 'O' &&
-            gameState[1] === 'O' &&
-            gameState[2] === 'O') ||
-          (gameState[3] === 'O' &&
-            gameState[4] === 'O' &&
-            gameState[5] === 'O') ||
-          (gameState[6] === 'O' &&
-            gameState[7] === 'O' &&
-            gameState[8] === 'O') ||
-          (gameState[0] === 'O' &&
-            gameState[3] === 'O' &&
-            gameState[6] === 'O') ||
-          (gameState[1] === 'O' &&
-            gameState[4] === 'O' &&
-            gameState[7] === 'O') ||
-          (gameState[2] === 'O' &&
-            gameState[5] === 'O' &&
-            gameState[8] === 'O') ||
-          (gameState[0] === 'O' &&
-            gameState[4] === 'O' &&
-            gameState[8] === 'O') ||
-          (gameState[2] === 'O' && gameState[4] === 'O' && gameState[6] === 'O')
-        ) {
+        } else if (winCon('O')) {
           playerTwoCurrentScore++;
           playerTwoScore.textContent = playerTwoCurrentScore;
-          gameStatus.textContent = `O won`;
+          gameStatus.textContent = `${player2.name} won`;
           afterResult();
         } else {
           let countXO = 0;
@@ -253,10 +234,6 @@ const Gameboard = (() => {
       })();
     });
   });
-
-  //goBackButton onclick, clear current scores
-  goBackButton.addEventListener('click', () => {
-    playerOneCurrentScore = 0;
-    playerTwoCurrentScore = 0;
-  });
+  // Result of game player vs computer (Will add later)
+  /*   function minimax(position, depth, maximizingPlayer) {} */
 })();
