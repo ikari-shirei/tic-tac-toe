@@ -16,7 +16,7 @@
 * Mobile responsive.
 
 ## Sources
-* [The Odin Project - Tic Tac Toe](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript)
+* [The Odin Project - Tic Tac Toe](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/tic-tac-toe)
 
 ## Project Status
 ```diff
